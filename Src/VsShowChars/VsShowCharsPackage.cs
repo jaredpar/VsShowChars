@@ -29,7 +29,7 @@ namespace VsShowChars
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     // This attribute is needed to let the shell know that this package exposes some menus.
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(GuidList.guidVsShowCharsPkgString)]
+    [Guid(GuidList.VsShowCharsPackageString)]
     public sealed class VsShowCharsPackage : Package
     {
         /// <summary>
@@ -64,7 +64,7 @@ namespace VsShowChars
             if ( null != mcs )
             {
                 // Create the command for the menu item.
-                CommandID menuCommandID = new CommandID(GuidList.guidVsShowCharsCmdSet, (int)PkgCmdIDList.cmdidMyCommand);
+                CommandID menuCommandID = new CommandID(GuidList.VsShowCharsCommandSetGuid, CommandList.ViewControlChars);
                 MenuCommand menuItem = new MenuCommand(MenuItemCallback, menuCommandID );
                 mcs.AddCommand( menuItem );
             }

@@ -1,14 +1,19 @@
-﻿// Guids.cs
-// MUST match guids.h
-using System;
+﻿using System;
 
 namespace VsShowChars
 {
-    static class GuidList
+    internal static class GuidList
     {
-        public const string guidVsShowCharsPkgString = "b2e3f7e8-cf16-419f-bbe4-1abe95c4dd6a";
-        public const string guidVsShowCharsCmdSetString = "694a780c-9677-4c06-8f99-78347cb683ac";
+        /// <summary>
+        /// This value must be kept in sync with VsShowChars.vsct
+        /// </summary>
+        public const string VsShowCharsPackageString = "b2e3f7e8-cf16-419f-bbe4-1abe95c4dd6a";
 
-        public static readonly Guid guidVsShowCharsCmdSet = new Guid(guidVsShowCharsCmdSetString);
+        /// <summary>
+        /// This value must be kept in sync with VsShowChars.vsct
+        /// </summary>
+        public const string VsShowCharsCommandSetString = "694a780c-9677-4c06-8f99-78347cb683ac";
+
+        public static readonly Guid VsShowCharsCommandSetGuid = new Guid(VsShowCharsCommandSetString);
     };
 }
