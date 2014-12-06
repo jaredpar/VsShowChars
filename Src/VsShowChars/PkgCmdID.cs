@@ -2,7 +2,7 @@
 // MUST match PkgCmdID.h
 using System;
 
-namespace JaredPar.VsShowChars
+namespace VsShowChars
 {
     static class PkgCmdIDList
     {

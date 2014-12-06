@@ -2,7 +2,7 @@
 // MUST match guids.h
 using System;
 
-namespace JaredPar.VsShowChars
+namespace VsShowChars
 {
     static class GuidList
     {
