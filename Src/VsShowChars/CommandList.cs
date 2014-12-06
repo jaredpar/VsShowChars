@@ -8,5 +8,6 @@ namespace VsShowChars
     internal static class CommandList
     {
         internal const int ViewControlChars = 0x100;
+        internal const int ViewNewLines = 0x101;
     };
 }

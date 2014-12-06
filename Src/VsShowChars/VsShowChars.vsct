@@ -19,6 +19,14 @@
           <ButtonText>View Control Characters</ButtonText>
         </Strings>
       </Button>
+
+      <Button guid="guidVsShowCharsCmdSet" id="cmdidViewNewLines" priority="0x0100" type="Button">
+        <Parent guid="guidStdEditor" id="IDG_VS_EDITOR_ADVANCED_CMDS" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>View New Lines</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
    
     <Bitmaps>
@@ -32,6 +40,7 @@
     <GuidSymbol name="guidVsShowCharsCmdSet" value="{694a780c-9677-4c06-8f99-78347cb683ac}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdidViewControlChars" value="0x0100" />
+      <IDSymbol name="cmdidViewNewLines" value="0x0101" />
     </GuidSymbol>
     
     <GuidSymbol name="guidImages" value="{4c48704c-b538-4304-b2f6-585a97caeff5}" >
