@@ -1,4 +1,5 @@
 ﻿using EditorUtils;
+using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
@@ -17,6 +18,7 @@ namespace VsShowChars.Implementation.NewLines
     {
         internal const string AdornmentLayerName = "NewLineDisplayAdornment";
 
+        private readonly IEditorFormatMapService _editorFormatMapService;
         private readonly IVsShowCharsOptions _options;
 
         /// <summary>
@@ -29,14 +31,16 @@ namespace VsShowChars.Implementation.NewLines
         public AdornmentLayerDefinition NewLineDisplayAdornmentLayerDefinition = null;
 
         [ImportingConstructor]
-        internal NewLineDisplayFactory(IVsShowCharsOptions options)
+        internal NewLineDisplayFactory(IEditorFormatMapService editorFormatMapService, IVsShowCharsOptions options)
         {
+            _editorFormatMapService = editorFormatMapService;
             _options = options;
         }
 
         void IWpfTextViewCreationListener.TextViewCreated(IWpfTextView textView)
         {
-            new NewLineDisplay(textView, textView.GetAdornmentLayer(AdornmentLayerName), _options);
+            var editorFormatMap = _editorFormatMapService.GetEditorFormatMap(textView);
+            new NewLineDisplay(textView, textView.GetAdornmentLayer(AdornmentLayerName), editorFormatMap, _options);
         }
     }
 }

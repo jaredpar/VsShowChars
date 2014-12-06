@@ -169,15 +169,15 @@ namespace VsShowChars.Implementation.ControlChars
 
         private void UpdateBrushes()
         {
-            var map = _editorFormatMap.GetProperties(ControlCharFormatDefinition.Name);
-            _foregroundBrush = map.GetForegroundBrush(ControlCharFormatDefinition.DefaultForegroundBrush);
+            var map = _editorFormatMap.GetProperties(Constants.VsShowCharsFormatDefinitionName);
+            _foregroundBrush = map.GetForegroundBrush(Constants.DefaultForegroundBrush);
         }
 
         private void OnFormatMappingChanged(object sender, FormatItemsEventArgs e)
         {
             foreach (var key in e.ChangedItems)
             {
-                if (key == ControlCharFormatDefinition.Name)
+                if (key == Constants.VsShowCharsFormatDefinitionName)
                 {
                     UpdateBrushes();
                     _adornmentCache.Clear();

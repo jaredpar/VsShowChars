@@ -1,5 +1,6 @@
 ﻿using EditorUtils;
 using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using System;
@@ -21,13 +22,15 @@ namespace VsShowChars.Implementation.NewLines
         private static readonly ReadOnlyCollection<ITagSpan<IntraTextAdornmentTag>> EmptyTagColllection = new ReadOnlyCollection<ITagSpan<IntraTextAdornmentTag>>(new List<ITagSpan<IntraTextAdornmentTag>>());
         private readonly IWpfTextView _wpfTextView;
         private readonly IAdornmentLayer _adornmentLayer;
+        private readonly IEditorFormatMap _editorFormatMap;
         private readonly IVsShowCharsOptions _options;
 
-        internal NewLineDisplay(IWpfTextView textView, IAdornmentLayer adornmentLayer, IVsShowCharsOptions options)
+        internal NewLineDisplay(IWpfTextView textView, IAdornmentLayer adornmentLayer, IEditorFormatMap editorFormatMap, IVsShowCharsOptions options)
         {
             _wpfTextView = textView;
             _adornmentLayer = adornmentLayer;
             _options = options;
+            _editorFormatMap = editorFormatMap;
 
             _wpfTextView.Closed += OnClosed;
             _wpfTextView.LayoutChanged += OnLayoutChanged;
@@ -93,13 +96,13 @@ namespace VsShowChars.Implementation.NewLines
             }
         }
 
-        private UIElement CreateAdornment(string text)
+        private UIElement CreateAdornment(string text, Brush foregroundBrush)
         {
             var textBox = new TextBox();
             textBox.Text = text;
             textBox.BorderThickness = new Thickness(1);
             textBox.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            textBox.Foreground = Brushes.Black;
+            textBox.Foreground = foregroundBrush;
             textBox.FontWeight = FontWeights.Bold;
             return textBox;
         }
@@ -118,6 +121,9 @@ namespace VsShowChars.Implementation.NewLines
 
         private void CreateVisuals(IWpfTextViewLineCollection textViewLines)
         {
+            var map = _editorFormatMap.GetProperties(Constants.VsShowCharsFormatDefinitionName);
+            var foregroundBrush = map.GetForegroundBrush(Constants.DefaultForegroundBrush);
+
             foreach (var textViewLine in textViewLines)
             {
                 var span = new SnapshotSpan(textViewLine.End, textViewLine.EndIncludingLineBreak);
@@ -132,7 +138,7 @@ namespace VsShowChars.Implementation.NewLines
                     continue;
                 }
                 
-                var adornment = CreateAdornment(text);
+                var adornment = CreateAdornment(text, foregroundBrush);
                 Geometry geometry = textViewLines.GetMarkerGeometry(span);
                 Canvas.SetLeft(adornment, geometry.Bounds.Left);
                 Canvas.SetTop(adornment, geometry.Bounds.Top);

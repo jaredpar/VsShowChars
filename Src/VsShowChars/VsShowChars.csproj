@@ -142,7 +142,7 @@
     <Compile Include="Guids.cs" />
     <Compile Include="Implementation\ControlChars\CharDisplayTaggerSource.cs" />
     <Compile Include="Implementation\ControlChars\CharDisplayTaggerSourceFactory.cs" />
-    <Compile Include="Implementation\ControlChars\ControlCharFormatDefinition.cs" />
+    <Compile Include="Implementation\VsShowCharsFormatDefinition.cs" />
     <Compile Include="Implementation\ControlChars\ControlCharUtil.cs" />
     <Compile Include="Implementation\NewLines\NewLineDisplay.cs" />
     <Compile Include="Implementation\NewLines\NewLineDisplayFactory.cs" />

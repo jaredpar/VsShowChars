@@ -15,7 +15,7 @@ namespace VsShowChars
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(GuidList.VsShowCharsPackageString)]
+    [Guid(Constants.VsShowCharsPackageString)]
     public sealed class VsShowCharsPackage : Package
     {
         private IVsShowCharsOptions _options;
@@ -38,8 +38,8 @@ namespace VsShowChars
             if (mcs != null)
             {
                 // Create the command for the menu item.
-                var viewControlCharsId = new CommandID(GuidList.VsShowCharsCommandSetGuid, CommandList.ViewControlChars);
-                var viewNewLinesId = new CommandID(GuidList.VsShowCharsCommandSetGuid, CommandList.ViewNewLines);
+                var viewControlCharsId = new CommandID(Constants.VsShowCharsCommandSetGuid, CommandList.ViewControlChars);
+                var viewNewLinesId = new CommandID(Constants.VsShowCharsCommandSetGuid, CommandList.ViewNewLines);
                 mcs.AddCommand(new MenuCommand(OnViewControlCharsClick, viewControlCharsId)); 
                 mcs.AddCommand(new MenuCommand(OnViewNewLinesClick, viewNewLinesId));
             }
