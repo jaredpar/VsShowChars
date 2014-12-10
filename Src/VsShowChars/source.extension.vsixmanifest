@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="b2e3f7e8-cf16-419f-bbe4-1abe95c4dd6a" Version="1.0" Language="en-US" Publisher="JaredPar" />
+    <Identity Id="b2e3f7e8-cf16-419f-bbe4-1abe95c4dd6a" Version="0.9" Language="en-US" Publisher="JaredPar" />
     <DisplayName>VsShowChars</DisplayName>
     <Description>Tool to show characters which are normally hidden in the editor.</Description>
   </Metadata>
